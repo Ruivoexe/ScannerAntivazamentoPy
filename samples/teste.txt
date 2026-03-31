@@ -1,0 +1,8 @@
+Cliente: Vinicius Ferreira
+Email: vinicius0310@email.com
+CPF: 123.456.789-09
+Telefone: (55) 99999-8888
+Cartão: 4111 1111 1111 1111
+senha=123456
+api_key=sk-test-abc123xyz
+salario=5500.00
