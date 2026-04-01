@@ -1,3 +1,4 @@
+"""scanner de arquivos"""
 from pathlib import Path
 from typing import List,Dict,Any
 from app.patterns import PATTERNS
@@ -58,4 +59,4 @@ def scan_diretorio(directory:Path)->list[Dict[str,Any]]:
         if arquivo_suportado(arquivo):
             resultados.append(scan_arquivo(arquivo))
     return resultados
-"buscar todos arquivos suportados em pastas e subpastas"
+"""buscar todos arquivos suportados em pastas e subpastas"""

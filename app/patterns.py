@@ -1,3 +1,4 @@
+"""dicionario de dados sensiveis"""
 import re
 regex = re
 
