@@ -2,6 +2,7 @@
 from pathlib import Path
 from typing import List,Dict,Any
 from app.patterns import PATTERNS
+from app.validation import validar_cpf,mascarar_cpf,severidade
 
 extensoes = {".txt",".csv",".json"}
 
@@ -21,17 +22,38 @@ def ler_arquivo(file_path:Path)->str:
         return "" #adicionar log de erro
 """tenta ler o arquivo sem quebrar o programa, formato utf-8 e latin-1"""
 
+def captura_refinada(tipo_dado: str, valor_encontrado: str, inicio: int, fim: int) -> Dict[str, Any]:
+    captura = {
+        "tipo": tipo_dado,
+        "conteudo": valor_encontrado,
+        "conteudo_mascarado": valor_encontrado,
+        "inicio": inicio,
+        "fim": fim,
+        "valido": None,
+        "severidade": severidade(tipo_dado),
+    }
+
+    if tipo_dado == "cpf":
+        captura["valido"] = validar_cpf(valor_encontrado)
+        captura["mascarado"] = mascarar_cpf(valor_encontrado)
+    return captura
+
+    "adiciona refinamento validação,mascara e severidade"
+
 def capturas_feitas(content:str)->List[Dict[str,Any]]:
     capturas = []
 
     for tipo_dado, pattern in PATTERNS.items():
         for conteudo in pattern.finditer(content):
-            capturas.append({
-                "tipo": tipo_dado,
-                "conteudo": conteudo.group(0),
-                "inicio": conteudo.start(),
-                "fim": conteudo.end()
-            })
+            valor_encontrado = conteudo.group(0)
+
+            captura = captura_refinada(
+                tipo_dado=tipo_dado,
+                valor_encontrado=valor_encontrado,
+                inicio=conteudo.start(),
+                fim=conteudo.end()
+            )
+            capturas.append(captura)
     return capturas
 "recebe o texto inteiro do arquivo e busca trechos sensiveis, e captura em uma lista para relatprio"
 
