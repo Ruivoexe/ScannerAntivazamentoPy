@@ -11,6 +11,8 @@ def sumario(resultados: List[Dict[str, Any]]) -> Dict[str, Any]:
     severidade_captura = {}
     cpfs_validos = 0
     cpfs_invalidos = 0
+    cartoes_validos = 0
+    cartoes_invalidos = 0
 
     for item in resultados:
         for captura in item["capturas"]:
@@ -25,6 +27,12 @@ def sumario(resultados: List[Dict[str, Any]]) -> Dict[str, Any]:
                 elif captura["valido"] is False:
                     cpfs_invalidos += 1
 
+            if tipo == "cartao":
+                if captura["valido"] is True:
+                    cartoes_validos += 1
+                elif captura["valido"] is False:
+                    cartoes_invalidos += 1
+
     return{
         "arq_total_scan": arq_total,
         "total_capturas": total_capturas,
@@ -32,6 +40,8 @@ def sumario(resultados: List[Dict[str, Any]]) -> Dict[str, Any]:
         "severidade_captura": severidade_captura,
         "cpfs_validos": cpfs_validos,
         "cpfs_invalidos": cpfs_invalidos,
+        "cartoes_validos": cartoes_validos,
+        "cartoes_invalidos": cartoes_invalidos,
     }
 
 def save_report(resultados: List[Dict[str, Any]],output_path:Path) -> None:

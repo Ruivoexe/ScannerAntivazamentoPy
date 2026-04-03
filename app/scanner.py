@@ -2,7 +2,13 @@
 from pathlib import Path
 from typing import List,Dict,Any
 from app.patterns import PATTERNS
-from app.validation import validar_cpf,mascarar_cpf,severidade
+from app.validation import (
+    validar_cpf,
+    mascarar_cpf,
+    validar_card,
+    mascarar_card,
+    severidade,
+)
 
 extensoes = {".txt",".csv",".json"}
 
@@ -26,7 +32,7 @@ def captura_refinada(tipo_dado: str, valor_encontrado: str, inicio: int, fim: in
     captura = {
         "tipo": tipo_dado,
         "conteudo": valor_encontrado,
-        "conteudo_mascarado": valor_encontrado,
+        "mascarado": valor_encontrado,
         "inicio": inicio,
         "fim": fim,
         "valido": None,
@@ -36,9 +42,14 @@ def captura_refinada(tipo_dado: str, valor_encontrado: str, inicio: int, fim: in
     if tipo_dado == "cpf":
         captura["valido"] = validar_cpf(valor_encontrado)
         captura["mascarado"] = mascarar_cpf(valor_encontrado)
-    return captura
 
+    if tipo_dado == "cartao":
+        captura["valido"] = validar_card(valor_encontrado)
+        captura["mascarado"] = mascarar_card(valor_encontrado)
+
+    return captura
     "adiciona refinamento validação,mascara e severidade"
+
 
 def capturas_feitas(content:str)->List[Dict[str,Any]]:
     capturas = []

@@ -37,6 +37,9 @@ def scan(
     table.add_row("Capturas",str(sumario_main["total_capturas"]))
     table.add_row("CPF válidos", str(sumario_main["cpfs_validos"]))
     table.add_row("CPF inválidos", str(sumario_main["cpfs_invalidos"]))
+    table.add_row("Cartoes validos", str(sumario_main["cartoes_validos"]))
+    table.add_row("Cartoes invalidos", str(sumario_main["cartoes_invalidos"]))
+
 
     for tipo,count in sumario_main["tipo_captura"].items():
         table.add_row(f"Tipo:{tipo}",str(count))
