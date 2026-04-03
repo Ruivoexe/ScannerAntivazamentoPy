@@ -1,8 +1,76 @@
-Cliente: João da Silva
-Email: joao.silva@email.com
-CPF: 123.456.789-09
-Telefone: (55) 99999-8888
-Cartão: 4111 1111 1111 1111
-senha=123456
-api_key=sk-test-abc123xyz
-salario=5500.00
+CONTRATO SIMPLES DE CONFIDENCIALIDADE
+Documento fictício criado exclusivamente para testes de scanner de exposição de dados.
+
+PARTES
+
+CONTRATANTE:
+Nome: Empresa Exemplo Tecnologia Ltda.
+CNPJ: 12.345.678/0001-90
+Responsável: Carlos Eduardo Martins
+E-mail: carlos.martins@empresaexemplo.com
+Telefone: (11) 98888-7777
+
+CONTRATADO:
+Nome: João Pedro Almeida
+CPF: 529.982.247-25
+RG: 12.345.678-9
+E-mail: joao.almeida.teste@gmail.com
+Telefone: (55) 99999-1234
+Endereço: Rua das Acácias, 123, Centro, Alegrete - RS
+
+CLÁUSULA 1 – OBJETO
+O presente contrato tem por objeto resguardar informações confidenciais trocadas entre as partes durante a análise, desenvolvimento, testes e manutenção de sistemas, documentos, bases de dados e demais materiais relacionados ao projeto.
+
+CLÁUSULA 2 – INFORMAÇÕES CONFIDENCIAIS
+Serão consideradas confidenciais, para todos os fins, as seguintes informações:
+- credenciais de acesso
+- documentos pessoais
+- dados financeiros
+- registros internos
+- relatórios técnicos
+- bases contendo e-mails, telefones e identificadores pessoais
+
+Exemplos de dados inseridos para teste:
+login=joaoalmeida
+senha=Admin123
+password=SenhaForte2026
+api_key=sk-test-abc123xyz456
+token=tok_teste_privado_999
+secret=segredo-interno-001
+
+CLÁUSULA 3 – DADOS FINANCEIROS
+Valor mensal do serviço: salario=5500.00
+Saldo inicial do projeto: saldo=12450.90
+Conta de referência: amount=8750.45
+
+CLÁUSULA 4 – TESTES DE PROCESSAMENTO
+Cartão de teste válido: 4111 1111 1111 1111
+Cartão de teste inválido: 1234 5678 9012 3456
+CPF alternativo inválido: 123.456.789-00
+
+CLÁUSULA 5 – OBRIGAÇÕES
+O contratado compromete-se a:
+a) não divulgar qualquer informação sigilosa a terceiros;
+b) utilizar os dados somente para fins autorizados;
+c) armazenar os documentos com o devido cuidado técnico;
+d) comunicar imediatamente qualquer suspeita de vazamento ou exposição indevida.
+
+CLÁUSULA 6 – PRAZO
+O dever de confidencialidade permanecerá válido durante toda a execução do projeto e por 5 anos após o encerramento da relação entre as partes.
+
+CLÁUSULA 7 – PENALIDADES
+O descumprimento deste instrumento poderá resultar em encerramento contratual, responsabilização civil e demais medidas cabíveis.
+
+CLÁUSULA 8 – FORO
+Fica eleito o foro da comarca de Alegrete/RS para dirimir quaisquer controvérsias oriundas deste instrumento.
+
+ASSINATURAS
+
+Contratante: Carlos Eduardo Martins
+E-mail para contato: carlos.martins@empresaexemplo.com
+
+Contratado: João Pedro Almeida
+CPF: 529.982.247-25
+E-mail: joao.almeida.teste@gmail.com
+
+Observação: todos os dados acima são fictícios ou inseridos apenas para fins de teste do sistema.
