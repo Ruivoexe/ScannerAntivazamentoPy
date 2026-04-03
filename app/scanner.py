@@ -28,13 +28,40 @@ def ler_arquivo(file_path:Path)->str:
         return "" #adicionar log de erro
 """tenta ler o arquivo sem quebrar o programa, formato utf-8 e latin-1"""
 
-def captura_refinada(tipo_dado: str, valor_encontrado: str, inicio: int, fim: int) -> Dict[str, Any]:
+#bloco de checagem de linhas
+# contar quebra de linha;
+def numero_linha(content: str, posicao:int)->int:
+    return content.count("\n",0,posicao)+1
+
+#retornar o texto da linha onde houve a captura
+def linha_texto(content:str, posicao:int)->str:
+    linhas = content.splitlines()
+
+    if not linhas:
+        return ""
+
+    linha = numero_linha(content,posicao)
+    if 1 <= linha <= len(linhas):
+        return linhas[linha-1]
+    return ""
+
+#gera um resumo da linha onde a captura foi feita
+def contexto(content: str, posicao: int, limite: int=120):
+    texto_linha = linha_texto(content, posicao).strip()
+    if len(texto_linha) <= limite:
+        return texto_linha
+
+    return texto_linha[:limite]+"..."
+
+def captura_refinada(content: str, tipo_dado: str, valor_encontrado: str, inicio: int, fim: int) -> Dict[str, Any]:
     captura = {
         "tipo": tipo_dado,
         "conteudo": valor_encontrado,
         "mascarado": valor_encontrado,
         "inicio": inicio,
         "fim": fim,
+        "linha": numero_linha(content,inicio),
+        "contexto": contexto(content,inicio),
         "valido": None,
         "severidade": severidade(tipo_dado),
     }
@@ -59,6 +86,7 @@ def capturas_feitas(content:str)->List[Dict[str,Any]]:
             valor_encontrado = conteudo.group(0)
 
             captura = captura_refinada(
+                content=content,
                 tipo_dado=tipo_dado,
                 valor_encontrado=valor_encontrado,
                 inicio=conteudo.start(),
@@ -72,7 +100,7 @@ def scan_arquivo(file_path:Path)->Dict[str,Any]:
     conteudo = ler_arquivo(file_path)
     if not conteudo:
         return {
-            "arquivo:" : str(file_path),
+            "arquivo" : str(file_path),
             "capturas" : [],
             "total_capturas" : 0,
             "status": "ilegivel_vazio",

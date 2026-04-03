@@ -1,2 +1,0 @@
-Cartao valido: 4111 1111 1111 1111
-Cartao invalido: 1234 5678 9012 3456
