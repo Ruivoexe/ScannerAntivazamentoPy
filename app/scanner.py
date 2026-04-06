@@ -1,4 +1,5 @@
 """scanner de arquivos"""
+import os
 from pathlib import Path
 from typing import List,Dict,Any
 from app.patterns import PATTERNS
@@ -11,10 +12,48 @@ from app.validation import (
 )
 
 extensoes = {".txt",".csv",".json"}
+diretorios_ignorados = {
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".git",
+    "node_modules",
+    "output",
+    ".idea",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".vscode",
+    "dist",
+    "build",
+    ".tox",
+    ".coverage",
+    "htmlcov",
+    ".eggs",
+}
+
+arquivos_ignorados = {
+    ".DS_Store",
+    "Thumbs.db",
+    "desktop.ini",
+}
 
 def arquivo_suportado(file_path:Path) -> bool:
-    return file_path.is_file() and file_path.suffix.lower() in extensoes
+    if not file_path.is_file():
+        return False
+
+    if arquivo_ignorado(file_path.name):
+        return False
+
+    return file_path.suffix.lower() in extensoes
 """Garante que não é diretorio e tem extensão suportada"""
+
+def diretorio_ignorado(nome_diretorio: str) -> bool:
+    return nome_diretorio.lower() in {item.lower() for item in diretorios_ignorados}
+"""verifica se o nome do diretorio esta na lista de exclusao"""
+
+def arquivo_ignorado(nome_arquivo: str) -> bool:
+    return nome_arquivo.lower() in {item.lower() for item in arquivos_ignorados}
+"""verifica se o nome do arquivo esta na lista de exclusao"""
 
 def ler_arquivo(file_path:Path)->str:
     try:
@@ -116,8 +155,18 @@ def scan_arquivo(file_path:Path)->Dict[str,Any]:
 
 def scan_diretorio(directory:Path)->list[Dict[str,Any]]:
     resultados = []
-    for arquivo in directory.rglob("*"):
-        if arquivo_suportado(arquivo):
-            resultados.append(scan_arquivo(arquivo))
+
+    for raiz,diretorios,arquivos in os.walk(directory):
+        diretorios[:]=[
+            nome for nome in diretorios
+            if not diretorio_ignorado(nome)
+        ]
+        #remove do caminho os diretorios que devem ser ignorados
+
+        for nome_arquivo in arquivos:
+            caminho_arquivo = Path(raiz) / nome_arquivo
+            if arquivo_suportado(caminho_arquivo):
+                resultados.append(scan_arquivo(caminho_arquivo))
+
     return resultados
 """buscar todos arquivos suportados em pastas e subpastas"""
