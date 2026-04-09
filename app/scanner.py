@@ -37,11 +37,32 @@ arquivos_ignorados = {
     "desktop.ini",
 }
 
+extensoes_ignoradas = {
+    ".log",
+    ".tmp",
+    ".bak",
+    ".db",
+    ".sqlite",
+    ".pyc",
+    ".pyo",
+    ".class",
+    ".cache",
+}
+
+tamanho_max_mb = 5 #define em megabytes
+tamanho_max_bytes = tamanho_max_mb * 1024 * 1024 #converte MB pra bytes
+
 def arquivo_suportado(file_path:Path) -> bool:
     if not file_path.is_file():
         return False
 
     if arquivo_ignorado(file_path.name):
+        return False
+
+    if extensao_ignorada(file_path):
+        return False
+
+    if arquivo_grande(file_path):
         return False
 
     return file_path.suffix.lower() in extensoes
@@ -54,6 +75,18 @@ def diretorio_ignorado(nome_diretorio: str) -> bool:
 def arquivo_ignorado(nome_arquivo: str) -> bool:
     return nome_arquivo.lower() in {item.lower() for item in arquivos_ignorados}
 """verifica se o nome do arquivo esta na lista de exclusao"""
+
+def extensao_ignorada(file_path: Path) -> bool:
+    return file_path.suffix.lower() in extensoes_ignoradas
+"""verifica se a extensao do arquivo esta na lista de exclusao"""
+
+def arquivo_grande(file_path:Path) -> bool:
+    try:
+        return file_path.stat().st_size > tamanho_max_bytes
+    except Exception:
+        return True
+    #verifica se o arquivo passa o numero maximo de bytes permitidos
+    # .st_size retorna o tamanho do arquivo em bytes
 
 def ler_arquivo(file_path:Path)->str:
     try:
