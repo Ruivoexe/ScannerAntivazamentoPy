@@ -3,7 +3,7 @@ from pathlib import Path
 import typer
 from rich.console import Console
 from rich.table import Table
-from app.report import save_report,sumario
+from app.report import save_report,save_csv,sumario
 from app.scanner import scan_diretorio
 
 app = typer.Typer(help="Scanner de exposição de dados sensíveis em arquivos locais")
@@ -16,6 +16,7 @@ def scan(
 ):
     target_path = Path(target)
     output_path = Path(output)
+    csv_path = output_path.with_suffix(".csv")
 
     if not target_path.exists():
         console.print(f"[red]Erro:[/red] Caminho '{target}' Não existe")
@@ -28,6 +29,7 @@ def scan(
     resultado = scan_diretorio(target_path)
     sumario_main = sumario(resultado)
     save_report(resultado,output_path)
+    save_csv(resultado,csv_path)
 
     table = Table(title="Resumo do Scan")
     table.add_column("Métrica", style="cyan")
@@ -49,6 +51,7 @@ def scan(
 
     console.print(table)
     console.print(f"\n[green]Relatório salvo em:[/green] {output_path}")
+    console.print(f"[green]CSV salvo em:[/green] {csv_path}")
 
 if __name__ == "__main__":
     app()

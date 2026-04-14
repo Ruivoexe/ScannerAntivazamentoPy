@@ -1,4 +1,5 @@
 """monta resumo de capturas e salva relatorio em json"""
+import csv
 import json
 from pathlib import Path
 from typing import List, Dict, Any
@@ -55,3 +56,41 @@ def save_report(resultados: List[Dict[str, Any]],output_path:Path) -> None:
 
 """percorre cada arquivo, depois cada captura do arquivo e conta por categoria"""
 """salva tudo em json e monta relatorio com resumo geral e dados detalhados do arquivo"""
+
+def save_csv(resultados: List[Dict[str,any]],output_path:Path) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with output_path.open("w",encoding="utf-8",newline="")as f:
+        writer = csv.writer(f)
+        writer.writerows([
+            "arquivo",
+            "tipo",
+            "conteudo",
+            "mascarado",
+            "valido",
+            "severidade",
+            "linha",
+            "contexto",
+            "inicio",
+            "fim",
+            "status_arquivo",
+        ])
+
+        for item in resultados:
+            arquivo = item.get("arquivo","")
+            status_arquivo = item.get("status","")
+
+            for captura in item.get("capturas",[]):
+                writer.writerow([
+                    arquivo,
+                    captura.get("tipo", ""),
+                    captura.get("conteudo", ""),
+                    captura.get("mascarado", ""),
+                    captura.get("valido", ""),
+                    captura.get("severidade", ""),
+                    captura.get("linha", ""),
+                    captura.get("contexto", ""),
+                    captura.get("inicio", ""),
+                    captura.get("fim", ""),
+                    status_arquivo,
+                ])

@@ -1,0 +1,288 @@
+{
+    "sumario": {
+        "arq_total_scan": 3,
+        "total_capturas": 22,
+        "tipo_captura": {
+            "cpf": 5,
+            "email": 5,
+            "telefone_br": 2,
+            "cartao": 2,
+            "credencial_exposta": 5,
+            "campo_financeiro": 3
+        },
+        "severidade_captura": {
+            "alta": 8,
+            "media": 7,
+            "critica": 7
+        },
+        "cpfs_validos": 4,
+        "cpfs_invalidos": 1,
+        "cartoes_validos": 1,
+        "cartoes_invalidos": 1
+    },
+    "files": [
+        {
+            "arquivo": "samples\\contrato.txt",
+            "capturas": [
+                {
+                    "tipo": "cpf",
+                    "conteudo": "529.982.247-25",
+                    "mascarado": "529.***.***-25",
+                    "inicio": 35,
+                    "fim": 49,
+                    "linha": 2,
+                    "contexto": "CPF: 529.982.247-25",
+                    "valido": true,
+                    "severidade": "alta"
+                },
+                {
+                    "tipo": "email",
+                    "conteudo": "joao.almeida.teste@gmail.com",
+                    "mascarado": "joao.almeida.teste@gmail.com",
+                    "inicio": 58,
+                    "fim": 86,
+                    "linha": 3,
+                    "contexto": "E-mail: joao.almeida.teste@gmail.com",
+                    "valido": null,
+                    "severidade": "media"
+                }
+            ],
+            "total_capturas": 2,
+            "status": "funcional"
+        },
+        {
+            "arquivo": "samples\\teste.txt",
+            "capturas": [
+                {
+                    "tipo": "cpf",
+                    "conteudo": "529.982.247-25",
+                    "mascarado": "529.***.***-25",
+                    "inicio": 358,
+                    "fim": 372,
+                    "linha": 15,
+                    "contexto": "CPF: 529.982.247-25",
+                    "valido": true,
+                    "severidade": "alta"
+                },
+                {
+                    "tipo": "cpf",
+                    "conteudo": "123.456.789-00",
+                    "mascarado": "123.***.***-00",
+                    "inicio": 1543,
+                    "fim": 1557,
+                    "linha": 49,
+                    "contexto": "CPF alternativo inválido: 123.456.789-00",
+                    "valido": false,
+                    "severidade": "alta"
+                },
+                {
+                    "tipo": "cpf",
+                    "conteudo": "529.982.247-25",
+                    "mascarado": "529.***.***-25",
+                    "inicio": 2452,
+                    "fim": 2466,
+                    "linha": 73,
+                    "contexto": "CPF: 529.982.247-25",
+                    "valido": true,
+                    "severidade": "alta"
+                },
+                {
+                    "tipo": "email",
+                    "conteudo": "carlos.martins@empresaexemplo.com",
+                    "mascarado": "carlos.martins@empresaexemplo.com",
+                    "inicio": 255,
+                    "fim": 288,
+                    "linha": 10,
+                    "contexto": "E-mail: carlos.martins@empresaexemplo.com",
+                    "valido": null,
+                    "severidade": "media"
+                },
+                {
+                    "tipo": "email",
+                    "conteudo": "joao.almeida.teste@gmail.com",
+                    "mascarado": "joao.almeida.teste@gmail.com",
+                    "inicio": 398,
+                    "fim": 426,
+                    "linha": 17,
+                    "contexto": "E-mail: joao.almeida.teste@gmail.com",
+                    "valido": null,
+                    "severidade": "media"
+                },
+                {
+                    "tipo": "email",
+                    "conteudo": "carlos.martins@empresaexemplo.com",
+                    "mascarado": "carlos.martins@empresaexemplo.com",
+                    "inicio": 2381,
+                    "fim": 2414,
+                    "linha": 70,
+                    "contexto": "E-mail para contato: carlos.martins@empresaexemplo.com",
+                    "valido": null,
+                    "severidade": "media"
+                },
+                {
+                    "tipo": "email",
+                    "conteudo": "joao.almeida.teste@gmail.com",
+                    "mascarado": "joao.almeida.teste@gmail.com",
+                    "inicio": 2475,
+                    "fim": 2503,
+                    "linha": 74,
+                    "contexto": "E-mail: joao.almeida.teste@gmail.com",
+                    "valido": null,
+                    "severidade": "media"
+                },
+                {
+                    "tipo": "telefone_br",
+                    "conteudo": "11) 98888-7777",
+                    "mascarado": "11) 98888-7777",
+                    "inicio": 300,
+                    "fim": 314,
+                    "linha": 11,
+                    "contexto": "Telefone: (11) 98888-7777",
+                    "valido": null,
+                    "severidade": "media"
+                },
+                {
+                    "tipo": "telefone_br",
+                    "conteudo": "55) 99999-1234",
+                    "mascarado": "55) 99999-1234",
+                    "inicio": 438,
+                    "fim": 452,
+                    "linha": 18,
+                    "contexto": "Telefone: (55) 99999-1234",
+                    "valido": null,
+                    "severidade": "media"
+                },
+                {
+                    "tipo": "cartao",
+                    "conteudo": "4111 1111 1111 1111",
+                    "mascarado": "***************1111",
+                    "inicio": 1451,
+                    "fim": 1470,
+                    "linha": 47,
+                    "contexto": "Cartão de teste válido: 4111 1111 1111 1111",
+                    "valido": true,
+                    "severidade": "critica"
+                },
+                {
+                    "tipo": "cartao",
+                    "conteudo": "1234 5678 9012 3456",
+                    "mascarado": "***************3456",
+                    "inicio": 1497,
+                    "fim": 1516,
+                    "linha": 48,
+                    "contexto": "Cartão de teste inválido: 1234 5678 9012 3456",
+                    "valido": false,
+                    "severidade": "critica"
+                },
+                {
+                    "tipo": "credencial_exposta",
+                    "conteudo": "senha=Admin123",
+                    "mascarado": "senha=Admin123",
+                    "inicio": 1116,
+                    "fim": 1130,
+                    "linha": 35,
+                    "contexto": "senha=Admin123",
+                    "valido": null,
+                    "severidade": "critica"
+                },
+                {
+                    "tipo": "credencial_exposta",
+                    "conteudo": "password=SenhaForte2026",
+                    "mascarado": "password=SenhaForte2026",
+                    "inicio": 1131,
+                    "fim": 1154,
+                    "linha": 36,
+                    "contexto": "password=SenhaForte2026",
+                    "valido": null,
+                    "severidade": "critica"
+                },
+                {
+                    "tipo": "credencial_exposta",
+                    "conteudo": "api_key=sk-test-abc123xyz456",
+                    "mascarado": "api_key=sk-test-abc123xyz456",
+                    "inicio": 1155,
+                    "fim": 1183,
+                    "linha": 37,
+                    "contexto": "api_key=sk-test-abc123xyz456",
+                    "valido": null,
+                    "severidade": "critica"
+                },
+                {
+                    "tipo": "credencial_exposta",
+                    "conteudo": "token=tok_teste_privado_999",
+                    "mascarado": "token=tok_teste_privado_999",
+                    "inicio": 1184,
+                    "fim": 1211,
+                    "linha": 38,
+                    "contexto": "token=tok_teste_privado_999",
+                    "valido": null,
+                    "severidade": "critica"
+                },
+                {
+                    "tipo": "credencial_exposta",
+                    "conteudo": "secret=segredo-interno-001",
+                    "mascarado": "secret=segredo-interno-001",
+                    "inicio": 1212,
+                    "fim": 1238,
+                    "linha": 39,
+                    "contexto": "secret=segredo-interno-001",
+                    "valido": null,
+                    "severidade": "critica"
+                },
+                {
+                    "tipo": "campo_financeiro",
+                    "conteudo": "salario=5500.00",
+                    "mascarado": "salario=5500.00",
+                    "inicio": 1296,
+                    "fim": 1311,
+                    "linha": 42,
+                    "contexto": "Valor mensal do serviço: salario=5500.00",
+                    "valido": null,
+                    "severidade": "alta"
+                },
+                {
+                    "tipo": "campo_financeiro",
+                    "conteudo": "saldo=12450.90",
+                    "mascarado": "saldo=12450.90",
+                    "inicio": 1338,
+                    "fim": 1352,
+                    "linha": 43,
+                    "contexto": "Saldo inicial do projeto: saldo=12450.90",
+                    "valido": null,
+                    "severidade": "alta"
+                },
+                {
+                    "tipo": "campo_financeiro",
+                    "conteudo": "amount=8750.45",
+                    "mascarado": "amount=8750.45",
+                    "inicio": 1374,
+                    "fim": 1388,
+                    "linha": 44,
+                    "contexto": "Conta de referência: amount=8750.45",
+                    "valido": null,
+                    "severidade": "alta"
+                }
+            ],
+            "total_capturas": 19,
+            "status": "funcional"
+        },
+        {
+            "arquivo": "samples\\pasta_ok\\dados.json",
+            "capturas": [
+                {
+                    "tipo": "cpf",
+                    "conteudo": "529.982.247-25",
+                    "mascarado": "529.***.***-25",
+                    "inicio": 21,
+                    "fim": 35,
+                    "linha": 4,
+                    "contexto": "\"CPF\":\"529.982.247-25\",",
+                    "valido": true,
+                    "severidade": "alta"
+                }
+            ],
+            "total_capturas": 1,
+            "status": "funcional"
+        }
+    ]
+}

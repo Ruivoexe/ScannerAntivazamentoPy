@@ -1,0 +1,33 @@
+a,r,q,u,i,v,o
+t,i,p,o
+c,o,n,t,e,u,d,o
+m,a,s,c,a,r,a,d,o
+v,a,l,i,d,o
+s,e,v,e,r,i,d,a,d,e
+l,i,n,h,a
+c,o,n,t,e,x,t,o
+i,n,i,c,i,o
+f,i,m
+s,t,a,t,u,s,_,a,r,q,u,i,v,o
+samples\contrato.txt,cpf,529.982.247-25,529.***.***-25,True,alta,2,CPF: 529.982.247-25,35,49,funcional
+samples\contrato.txt,email,joao.almeida.teste@gmail.com,joao.almeida.teste@gmail.com,,media,3,E-mail: joao.almeida.teste@gmail.com,58,86,funcional
+samples\teste.txt,cpf,529.982.247-25,529.***.***-25,True,alta,15,CPF: 529.982.247-25,358,372,funcional
+samples\teste.txt,cpf,123.456.789-00,123.***.***-00,False,alta,49,CPF alternativo inválido: 123.456.789-00,1543,1557,funcional
+samples\teste.txt,cpf,529.982.247-25,529.***.***-25,True,alta,73,CPF: 529.982.247-25,2452,2466,funcional
+samples\teste.txt,email,carlos.martins@empresaexemplo.com,carlos.martins@empresaexemplo.com,,media,10,E-mail: carlos.martins@empresaexemplo.com,255,288,funcional
+samples\teste.txt,email,joao.almeida.teste@gmail.com,joao.almeida.teste@gmail.com,,media,17,E-mail: joao.almeida.teste@gmail.com,398,426,funcional
+samples\teste.txt,email,carlos.martins@empresaexemplo.com,carlos.martins@empresaexemplo.com,,media,70,E-mail para contato: carlos.martins@empresaexemplo.com,2381,2414,funcional
+samples\teste.txt,email,joao.almeida.teste@gmail.com,joao.almeida.teste@gmail.com,,media,74,E-mail: joao.almeida.teste@gmail.com,2475,2503,funcional
+samples\teste.txt,telefone_br,11) 98888-7777,11) 98888-7777,,media,11,Telefone: (11) 98888-7777,300,314,funcional
+samples\teste.txt,telefone_br,55) 99999-1234,55) 99999-1234,,media,18,Telefone: (55) 99999-1234,438,452,funcional
+samples\teste.txt,cartao,4111 1111 1111 1111,***************1111,True,critica,47,Cartão de teste válido: 4111 1111 1111 1111,1451,1470,funcional
+samples\teste.txt,cartao,1234 5678 9012 3456,***************3456,False,critica,48,Cartão de teste inválido: 1234 5678 9012 3456,1497,1516,funcional
+samples\teste.txt,credencial_exposta,senha=Admin123,senha=Admin123,,critica,35,senha=Admin123,1116,1130,funcional
+samples\teste.txt,credencial_exposta,password=SenhaForte2026,password=SenhaForte2026,,critica,36,password=SenhaForte2026,1131,1154,funcional
+samples\teste.txt,credencial_exposta,api_key=sk-test-abc123xyz456,api_key=sk-test-abc123xyz456,,critica,37,api_key=sk-test-abc123xyz456,1155,1183,funcional
+samples\teste.txt,credencial_exposta,token=tok_teste_privado_999,token=tok_teste_privado_999,,critica,38,token=tok_teste_privado_999,1184,1211,funcional
+samples\teste.txt,credencial_exposta,secret=segredo-interno-001,secret=segredo-interno-001,,critica,39,secret=segredo-interno-001,1212,1238,funcional
+samples\teste.txt,campo_financeiro,salario=5500.00,salario=5500.00,,alta,42,Valor mensal do serviço: salario=5500.00,1296,1311,funcional
+samples\teste.txt,campo_financeiro,saldo=12450.90,saldo=12450.90,,alta,43,Saldo inicial do projeto: saldo=12450.90,1338,1352,funcional
+samples\teste.txt,campo_financeiro,amount=8750.45,amount=8750.45,,alta,44,Conta de referência: amount=8750.45,1374,1388,funcional
+samples\pasta_ok\dados.json,cpf,529.982.247-25,529.***.***-25,True,alta,4,"""CPF"":""529.982.247-25"",",21,35,funcional
